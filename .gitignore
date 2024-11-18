@@ -1,1 +1,37 @@
-venv
+# Python files
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.sqlite3
+
+# Virtual environment
+venv/
+env/
+
+# Django migrations
+*/migrations/
+!*/migrations/__init__.py
+
+# Logs
+*.log
+logs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Git files
+*.orig
+
+# Static and media files (optional)
+staticfiles/
+media/
+
+# Environment variables
+.env
