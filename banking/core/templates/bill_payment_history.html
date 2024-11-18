@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Bill Payment History</h2>
+{% if payments %}
+
+<table>
+    <tr>
+        <th>Bill Name</th>
+        <th>Amount</th>
+        <th>Payment Date</th>
+    </tr>
+
+    {% for payment in payments %}
+    <tr>
+        <td>{{ payment.bill_name }}</td>
+        <td>₹{{ payment.amount }}</td>
+        <td>{{ payment.payment_date }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No Bills found.</p>
+{% endif %}
+<a href="{% url 'home' %}">Go to Home</a>
+
+
+{% endblock %}

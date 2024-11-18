@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4A628A;">
+    <div class="container">
+        <a class="navbar-brand" href="#">Banking App</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section: Account Details -->
+<section class="hero bg-light py-5" style="background-color: #4A628A; color: white;">
+    <div class="container text-center text-black">
+        <h2 class="mb-3">Welcome, {{ user.username }}</h2>
+        <p class="lead">Your account details</p>
+
+        {% if account %}
+        <div class="account-details text-black">
+            <p><strong>Account Number:</strong> {{ account.account_number }}</p>
+            <p><strong>Balance:</strong>
+                <span id="balance" class="d-inline-block">******</span>
+                <button type="button" class="btn btn-outline-light btn-sm text-black" id="toggleBalance">
+                    <i class="bi bi-eye"></i> 
+                </button>
+            </p>
+        </div>
+        {% else %}
+        <p><a href="{% url 'create_account' %}" class="btn btn-light">Create Account</a></p>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Content Section: Cards -->
+<section class="content py-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Fund Transfer Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header text-white" style="background-color: #4A628A;">
+                        <h5 class="card-title">Fund Transfer</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'fund_transfer' %}" class="btn btn-primary w-100">
+                            <i class="bi bi-currency-exchange"></i> Transfer Funds
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pay Bills Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header text-white" style="background-color: #4A628A;">
+                        <h5 class="card-title">Pay Bills</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'bill_payment' %}" class="btn btn-primary w-100">
+                            <i class="bi bi-file-earmark-earbuds"></i> Pay Bills
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Transaction History Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header text-white" style="background-color: #4A628A;">
+                        <h5 class="card-title">Transaction History</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'transaction_history' %}" class="btn btn-primary w-100">
+                            <i class="bi bi-clock-history"></i> View History
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill History Card -->
+            <div class="col-md-3 mb-4">
+                <div class="card shadow-lg border-0 rounded-4">
+                    <div class="card-header text-white" style="background-color: #4A628A;">
+                        <h5 class="card-title">Bill History</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <a href="{% url 'bill_history' %}" class="btn btn-primary w-100">
+                            <i class="bi bi-calendar-check"></i> View Bill History
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="bg-dark text-white text-center py-4">
+    <p>&copy; 2024 Banking App. All rights reserved.</p>
+</footer>
+
+<!-- Script to Toggle Balance Visibility -->
+<script>
+    document.getElementById('toggleBalance').addEventListener('click', function() {
+        var balance = document.getElementById('balance');
+        var icon = this.querySelector('i');
+        if (balance.textContent === '******') {
+            balance.textContent = '{{ account.balance }}';
+            icon.classList.add('bi-eye-slash');
+        } else {
+            balance.textContent = '******';
+            icon.classList.add('bi-eye');
+        }
+    });
+</script>
+
+{% endblock %}
