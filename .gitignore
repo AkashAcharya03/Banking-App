@@ -10,7 +10,7 @@ venv/
 env/
 
 # Django migrations
-*/migrations/
+banking/core//migrations/
 !*/migrations/__init__.py
 
 # Logs
