@@ -1,25 +1,32 @@
 from django import forms
-from .models import Transaction, BillPayment
-
-
-from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.forms import UserCreationForm
-from django import forms
 from django.contrib.auth.models import User
+from .models import Transaction, BillPayment, Account
+
 
 class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
+    email = forms.EmailField(
+        required=True,
+        widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email'}),
+        help_text="A valid email address is required.",
+    )
 
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
 
-from django import forms
-from .models import Account
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field_name, field in self.fields.items():
+            field.widget.attrs['class'] = 'form-control'
+            field.help_text = None  # Optionally remove default Django help texts
 
-from django import forms
-from .models import Account
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already registered.")
+        return email
+
 
 class AccountCreationForm(forms.ModelForm):
     class Meta:
@@ -28,9 +35,6 @@ class AccountCreationForm(forms.ModelForm):
 
     account_number = forms.CharField(max_length=20, required=True)
     balance = forms.DecimalField(max_digits=10, decimal_places=2, required=True)
-
-from django import forms
-from .models import Account
 
 class TransferForm(forms.Form):
     sender_account = forms.CharField(max_length=20, required=False)  # Default user account
@@ -50,17 +54,18 @@ class TransferForm(forms.Form):
         return cleaned_data
 
 
-from django import forms
-from .models import BillPayment
-
-from django import forms
-from .models import BillPayment
-
 class BillPaymentForm(forms.ModelForm):
     class Meta:
         model = BillPayment
-        fields = ['bill_name', 'amount']  # Exclude the account field
+        fields = ['bill_name', 'amount']
         widgets = {
             'bill_name': forms.TextInput(attrs={'class': 'form-control'}),
             'amount': forms.NumberInput(attrs={'class': 'form-control'}),
         }
+
+    # Optional: Add custom validation or mark a field as required
+    def clean_amount(self):
+        amount = self.cleaned_data.get('amount')
+        if amount <= 0:
+            raise forms.ValidationError("Amount must be positive.")
+        return amount

@@ -16,14 +16,15 @@
     </div>
 </nav>
 
+
 <!-- Hero Section: Account Details -->
 <section class="hero bg-light py-5" style="background-color: #4A628A; color: white;">
     <div class="container text-center text-black">
-        <h2 class="mb-3">Welcome, {{ user.username }}</h2>
-        <p class="lead">Your account details</p>
-
+        <h5 class="mb-3 text-start">Welcome, {{ user.username }}</h5>
+        
         {% if account %}
-        <div class="account-details text-black">
+        <p class="lead">Your account details</p>
+        <div class=" account-details text-black">
             <p><strong>Account Number:</strong> {{ account.account_number }}</p>
             <p><strong>Balance:</strong>
                 <span id="balance" class="d-inline-block">******</span>
@@ -33,7 +34,9 @@
             </p>
         </div>
         {% else %}
-        <p><a href="{% url 'create_account' %}" class="btn btn-light">Create Account</a></p>
+        <p class="lead">Create your account</p>
+
+        <p><a href="{% url 'create_account' %}" class="btn btn-dark">Create Account</a></p>
         {% endif %}
     </div>
 </section>
@@ -45,11 +48,11 @@
             <!-- Fund Transfer Card -->
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header text-white" style="background-color: #4A628A;">
+                    {% comment %} <div class="card-header text-white" style="background-color: #4A628A;">
                         <h5 class="card-title">Fund Transfer</h5>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="card-body text-center">
-                        <a href="{% url 'fund_transfer' %}" class="btn btn-primary w-100">
+                        <a href="{% url 'fund_transfer' %}" class="pt-5 pb-5 btn btn-primary w-100">
                             <i class="bi bi-currency-exchange"></i> Transfer Funds
                         </a>
                     </div>
@@ -59,11 +62,11 @@
             <!-- Pay Bills Card -->
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header text-white" style="background-color: #4A628A;">
+                    {% comment %} <div class="card-header text-white" style="background-color: #4A628A;">
                         <h5 class="card-title">Pay Bills</h5>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="card-body text-center">
-                        <a href="{% url 'bill_payment' %}" class="btn btn-primary w-100">
+                        <a href="{% url 'bill_payment' %}" class="pt-5 pb-5 btn btn-primary w-100">
                             <i class="bi bi-file-earmark-earbuds"></i> Pay Bills
                         </a>
                     </div>
@@ -73,11 +76,11 @@
             <!-- Transaction History Card -->
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header text-white" style="background-color: #4A628A;">
+                    {% comment %} <div class="card-header text-white" style="background-color: #4A628A;">
                         <h5 class="card-title">Transaction History</h5>
-                    </div>
-                    <div class="card-body text-center">
-                        <a href="{% url 'transaction_history' %}" class="btn btn-primary w-100">
+                    </div> {% endcomment %}
+                    <div class="card-body text-center ">
+                        <a href="{% url 'transaction_history' %}" class="pt-5 pb-5 btn btn-primary w-100">
                             <i class="bi bi-clock-history"></i> View History
                         </a>
                     </div>
@@ -87,11 +90,11 @@
             <!-- Bill History Card -->
             <div class="col-md-3 mb-4">
                 <div class="card shadow-lg border-0 rounded-4">
-                    <div class="card-header text-white" style="background-color: #4A628A;">
+                    {% comment %} <div class="card-header text-white" style="background-color: #4A628A;">
                         <h5 class="card-title">Bill History</h5>
-                    </div>
+                    </div> {% endcomment %}
                     <div class="card-body text-center">
-                        <a href="{% url 'bill_history' %}" class="btn btn-primary w-100">
+                        <a href="{% url 'bill_history' %}" class="pt-5 pb-5 btn btn-primary w-100">
                             <i class="bi bi-calendar-check"></i> View Bill History
                         </a>
                     </div>

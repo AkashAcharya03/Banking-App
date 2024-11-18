@@ -3,18 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fund Transfer</title>
+    <title>Banking Form</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+    </style>
 </head>
 <body>
-    <h1>Fund Transfer</h1>
+    <div class="container form-container">
+        <h2 class="text-center">Transfer Money</h2>
+        <form method="post">
+            {% load widget_tweaks %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="sender_account">Sender Account</label>
+                {{ form.sender_account|add_class:"form-control" }}
+            </div>
 
-        <button type="submit">Transfer</button>
-    </form>
+            <div class="form-group">
+                <label for="receiver_account">Receiver Account</label>
+                {{ form.receiver_account|add_class:"form-control" }}
+            </div>
 
-    <a href="{% url 'home' %}">Go to Home</a>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                {{ form.amount|add_class:"form-control" }}
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Transfer</button>
+        </form>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

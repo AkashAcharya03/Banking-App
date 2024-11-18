@@ -1,20 +1,40 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bill Payment</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2 class="text-center">Bill Payment</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="bill_name">Bill Name</label>
+          {{ form.bill_name }}
+        </div>
 
-{% block content %}
-<h2>Pay Your Bills</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Pay Bill</button>
-</form>
+        <div class="form-group">
+          <label for="amount">Amount</label>
+          {{ form.amount }}
+        </div>
 
-{% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-{% endif %}
-<a href="{% url 'home' %}">Go to Home</a>
+        <button type="submit" class="btn btn-primary btn-block">
+          Pay Bill
+        </button>
+      </form>
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+    </div>
 
-{% endblock %}
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

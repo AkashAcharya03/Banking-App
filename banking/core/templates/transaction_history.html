@@ -4,35 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Transaction History</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <h1>Transaction History</h1>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Transaction History</h1>
 
-    {% if transactions %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Sender</th>
-                    <th>Receiver</th>
-                    <th>Amount</th>
-                    <th>Timestamp</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for transaction in transactions %}
+        {% if transactions %}
+            <table class="table table-bordered table-striped">
+                <thead>
                     <tr>
-                        <td>{{ transaction.sender.account_number }}</td>
-                        <td>{{ transaction.receiver.account_number }}</td>
-                        <td>{{ transaction.amount }}</td>
-                        <td>{{ transaction.timestamp }}</td>
+                        <th>Sender</th>
+                        <th>Receiver</th>
+                        <th>Amount</th>
+                        <th>Timestamp</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% else %}
-        <p>No transactions found.</p>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for transaction in transactions %}
+                        <tr>
+                            <td>{{ transaction.sender.account_number }}</td>
+                            <td>{{ transaction.receiver.account_number }}</td>
+                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.timestamp|date:"F j, Y, g:i a" }}</td> <!-- Format timestamp -->
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="text-center">No transactions found.</p>
+        {% endif %}
 
-    <a href="{% url 'home' %}">Go to Home</a>
+        <div class="text-center mt-4">
+            <a href="{% url 'home' %}" class="btn btn-primary">Go to Home</a>
+        </div>
+    </div>
+
+    <!-- Optional: Include Bootstrap JS for better responsiveness -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
