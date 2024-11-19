@@ -115,7 +115,7 @@
         var balance = document.getElementById('balance');
         var icon = this.querySelector('i');
         if (balance.textContent === '******') {
-            balance.textContent = '{{ account.balance }}';
+            balance.textContent = '₹{{ account.balance }}';
             icon.classList.add('bi-eye-slash');
         } else {
             balance.textContent = '******';

@@ -71,16 +71,22 @@ def create_account_view(request):
         form = AccountCreationForm(request.POST)
         if form.is_valid():
             account = form.save(commit=False)  # Do not save to DB yet
-            account.user = (
-                request.user
-            )  # Link the account to the currently logged-in user
+            account.user = request.user  # Link the account to the currently logged-in user
+
+            # Automatically generate the account number
+            last_account = Account.objects.order_by("id").last()
+            if last_account:
+                new_account_number = int(last_account.account_number) + 1
+            else:
+                new_account_number = 20000001
+            account.account_number = str(new_account_number)  # Assign the new account number
+
             account.save()  # Save the account to the database
             return redirect("home")  # Redirect to the account details page
     else:
         form = AccountCreationForm()
 
     return render(request, "create_account.html", {"form": form})
-
 
 @login_required
 def fund_transfer(request):

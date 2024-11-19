@@ -27,14 +27,20 @@ class CustomUserCreationForm(UserCreationForm):
             raise forms.ValidationError("This email is already registered.")
         return email
 
-
 class AccountCreationForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ['account_number', 'balance']  # These are the fields the user will fill out.
+        fields = ['balance']  # Only include the balance field
+        widgets = {
+            'balance': forms.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Enter Initial Balance'}),
+        }
 
-    account_number = forms.CharField(max_length=20, required=True)
-    balance = forms.DecimalField(max_digits=10, decimal_places=2, required=True)
+    def clean_balance(self):
+        balance = self.cleaned_data.get('balance')
+        if balance < 0:
+            raise forms.ValidationError("Balance cannot be negative.")
+        return balance
+
 
 class TransferForm(forms.Form):
     sender_account = forms.CharField(max_length=20, required=False)  # Default user account
