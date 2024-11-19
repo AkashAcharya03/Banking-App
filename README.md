@@ -1,10 +1,6 @@
-Here’s the updated README file with MySQL as the database:
-
----
-
 # Banking Web Application
 
-This is a comprehensive banking web application designed for account management, secure fund transfers, bill payments, and transaction history tracking. It provides an easy-to-use interface for users to manage their finances effectively.
+This is a comprehensive banking web application designed for account management, secure fund transfers, bill payments, transaction history and bill history tracking. It provides an easy-to-use interface for users to manage their finances effectively.
 
 ## Table of Contents
 
@@ -30,6 +26,7 @@ This is a comprehensive banking web application designed for account management,
 - **Fund Transfer**: Transfer money securely between accounts.
 - **Bill Payment**: Pay bills and view payment history.
 - **Transaction History**: Track all user transactions with detailed records.
+- **Bill History**: Track all user bill transactions with detailed records.
 
 ## Installation
 
@@ -37,7 +34,7 @@ Follow these steps to get the application up and running:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/banking-web-app.git
+    git clone https://github.com/AkashAcharya03/banking-web-app.git
     ```
 
 2. Navigate into the project directory:
