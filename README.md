@@ -34,12 +34,12 @@ Follow these steps to get the application up and running:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/AkashAcharya03/banking-web-app.git
+    https://github.com/AkashAcharya03/Banking-App.git
     ```
 
 2. Navigate into the project directory:
     ```bash
-    cd banking-web-app
+    cd banking-app/banking
     ```
 
 3. Create and activate a virtual environment:
@@ -55,7 +55,7 @@ Follow these steps to get the application up and running:
 
 5. Install MySQL and set up the database. You can use the following commands to create a database:
     ```sql
-    CREATE DATABASE banking;
+    CREATE DATABASE banking_db;
     ```
 
 6. Update the `DATABASES` setting in `settings.py` to use MySQL:
@@ -63,7 +63,7 @@ Follow these steps to get the application up and running:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': 'banking',
+            'NAME': 'banking_db',
             'USER': 'your_mysql_username',
             'PASSWORD': 'your_mysql_password',
             'HOST': 'localhost',
@@ -74,6 +74,7 @@ Follow these steps to get the application up and running:
 
 7. Run migrations to set up the database:
     ```bash
+    python manage.py makemigrations
     python manage.py migrate
     ```
 
@@ -137,14 +138,3 @@ Once the application is running, you can:
 - **Pay Bills**: Access the bill payment feature through the `bill_payment.html` page.
 - **View Transaction History**: Check your transaction records on the `transaction_history.html` page.
 
-## Contributing
-
-Feel free to fork this repository, open issues, and submit pull requests. Contributions are always welcome!
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-This README file now includes the information about using MySQL for the database and relevant setup instructions.
