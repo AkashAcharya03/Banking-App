@@ -36,7 +36,7 @@ Follow these steps to get the application up and running:
 
 2. Navigate into the project directory:
     ```bash
-    cd banking-app/banking
+    cd Banking-App/banking
     ```
 
 3. Create and activate a virtual environment:
