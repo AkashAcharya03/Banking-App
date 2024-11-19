@@ -6,7 +6,6 @@ This is a comprehensive banking web application designed for account management,
 
 - [Technologies Used](#technologies-used)
 - [Installation](#installation)
-- [File Structure](#file-structure)
 - [Usage](#usage)
 
 ## Technologies Used
