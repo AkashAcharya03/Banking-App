@@ -5,7 +5,6 @@ This is a comprehensive banking web application designed for account management,
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
-- [Features](#features)
 - [Installation](#installation)
 - [File Structure](#file-structure)
 - [Usage](#usage)
@@ -83,47 +82,7 @@ Follow these steps to get the application up and running:
 
 9. Access the application by visiting `http://127.0.0.1:8000/` in your web browser.
 
-## File Structure
 
-```bash
-banking/
-│
-├── banking/                  # Main project folder
-│   ├── __pycache__/          # Compiled Python files
-│   ├── __init__.py
-│   ├── asgi.py               # ASGI configuration
-│   ├── settings.py           # Django settings
-│   ├── urls.py               # Project URLs
-│   ├── wsgi.py               # WSGI configuration
-├── core/                     # Core app for main functionality
-│   ├── __pycache__/          
-│   ├── migrations/           # Database migrations
-│   ├── static/               # Static files (CSS, JS, Images)
-│   │   ├── css/              # Stylesheets
-│   │   │   └── style.css
-│   ├── templates/            # HTML templates
-│   │   ├── account.html      # Account details page
-│   │   ├── base.html         # Base template
-│   │   ├── bill_payment.html # Bill payment page
-│   │   ├── bill_payment_history.html
-│   │   ├── create_account.html
-│   │   ├── home.html
-│   │   ├── signin.html
-│   │   ├── signup.html
-│   │   ├── transaction_history.html
-│   │   └── transfer.html     # Fund transfer page
-│   ├── __init__.py
-│   ├── admin.py
-│   ├── apps.py
-│   ├── forms.py
-│   ├── models.py             # Database models
-│   ├── tests.py
-│   ├── urls.py               # App-specific URLs
-│   └── views.py              # View logic
-├── manage.py                 # Django management script
-├── .gitignore                # Git ignore file
-└── requirements.txt          # List of dependencies
-```
 
 ## Usage
 
