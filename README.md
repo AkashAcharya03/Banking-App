@@ -9,8 +9,6 @@ This is a comprehensive banking web application designed for account management,
 - [Installation](#installation)
 - [File Structure](#file-structure)
 - [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Technologies Used
 
